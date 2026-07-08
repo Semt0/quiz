@@ -1,0 +1,36 @@
+============================================================
+DIFF PREVIEW: 即将追加到 docs/note/算法设计与分析/quiz.yml
+============================================================
+科目: 算法设计与分析
+章节: 第10章 近似算法
+来源: hw8.tex
+新增题目数: 4
+跳过（重复）: 0
+
+--- 新增题目 1 ---
+  id: algorithm-design-analysis-ch10-001
+  type: short_answer
+  difficulty: core
+  question: 10.1 最小顶点覆盖问题的近似算法 MVC 任取一条边，把这条边的两个端点加入顶点覆盖集，现在改为只把这条边的一个端点加入顶点覆盖集，其余不变。试分析这个修改后的算法的近似性能。...
+  explanation: 修改后的算法不再具有有界的常数近似比，其近似性能可以任意差。考虑星形图实例：中心顶点 c 与 n 个叶子顶点相连。最优解只需选中心顶点 c，大小为 1。但修改后的算法每一步可能不幸选中叶子顶点，需要将所有 n 个叶子顶点都加入覆盖集，输出大...
+
+--- 新增题目 2 ---
+  id: algorithm-design-analysis-ch10-002
+  type: short_answer
+  difficulty: core
+  question: 10.3 装箱问题（优化形式）：任给 n 件物品，物品 j 的重量为 w_j，1≤j≤n。限制每只箱子装入物品的总重量不超过 B，w_j 和 B 都是正整数，且 w_j≤B。要求用最少的箱子装入所有物品。考虑首次适合算法（FF）：按输入顺序...
+  explanation: 证明思路：先证引理——对任意两只箱子 S_i 和 S_j（i<j），都有 w(S_i)+w(S_j)>B。因为装入 S_j 的第一件物品 x 无法装入当时已打开的 S_i（否则 FF 会把它放入 S_i），故 w(S_i')+w_x>B，而...
+
+--- 新增题目 3 ---
+  id: algorithm-design-analysis-ch10-003
+  type: short_answer
+  difficulty: advanced
+  question: 10.4 证明：装箱问题不存在近似比 r < 3/2 的多项式时间近似算法，除非 P=NP。...
+  explanation: 采用反证法，从划分问题（Partition）归约。划分问题：给定 n 个正整数 a_1,...,a_n，判定是否存在子集 S 使得 Σ_{i∈S} a_i = Σ_{i∉S} a_i。假设存在近似比 r<3/2 的多项式时间近似算法 A。对...
+
+--- 新增题目 4 ---
+  id: algorithm-design-analysis-ch10-004
+  type: short_answer
+  difficulty: core
+  question: 10.5 设无向图 G=⟨V,E⟩，V_1∪V_2=V，V_1∩V_2=∅，称 (V_1,V_2)={(u,v)|(u,v)∈E, 且 u∈V_1,v∈V_2} 是 G 的割集。求最大割集问题：任给无向图 G，求边数最多的割集。考虑局部改进...
+  explanation: 设 MCUT 终止时割边集为 E_cut，非割边集为 E_non。终止条件：对任意顶点 u，d_non(u) ≤ d_cut(u)。将所有顶点不等式相加得 Σ d_non(u) ≤ Σ d_cut(u)。由于每条非割边两端在同一侧，被左端计...

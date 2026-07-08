@@ -1,0 +1,28 @@
+============================================================
+SUMMARY: quiz-from-homework 执行摘要
+============================================================
+输入文件: /Users/semt0/Desktop/2026春/算分/hw8/hw8.tex
+推断科目: 算法设计与分析 (置信度: 高 — 文件路径含'算分'，内容标题为'算法设计与分析第八次作业')
+目标文件: /Users/semt0/blog/Semt0.github.io/docs/note/算法设计与分析/quiz.yml
+
+提取题目总数: 4
+  - 题型: 全部为 short_answer（证明题）
+  - 难度分布: core=3, advanced=1
+  - 章节: 第10章 近似算法
+
+去重结果:
+  - 精确重复: 0
+  - 疑似重复 (fuzzy>0.85): 0
+  - 保留待写入: 4
+
+校验结果: 通过
+
+LLM 自洽性检查: N/A（题目已有完整解答，无需 LLM 生成）
+
+待复核题目: 0
+
+输出文件位置: /Users/semt0/blog/Semt0.github.io/.claude/skills/quiz-from-homework/quiz-from-homework-workspace/iteration-1/eval-2-tex/with_skill/outputs
+  - extracted_questions.json
+  - diff_preview.txt
+  - summary.txt
+  - confirmation_prompt.txt

@@ -1,0 +1,52 @@
+# Helper 脚本命令行记录
+
+## 命令 1：去重检测
+```bash
+uv run python .claude/skills/quiz-from-homework/scripts/quiz_homework_helper.py \
+  --subject 算法设计与分析 \
+  --questions .claude/skills/quiz-from-homework/quiz-from-homework-workspace/iteration-2/eval-1-tex-rerun/with_skill/outputs/extracted_questions.json \
+  --check-duplicate
+```
+
+### 输出：
+```
+[精确重复] 发现 4 道：
+  - algo-approx-106 与 algo-approx-101
+  - algo-approx-107 与 algo-approx-103
+  - algo-approx-108 与 algo-approx-104
+  - algo-approx-109 与 algo-approx-105
+```
+
+## 命令 2：Schema 校验
+```bash
+uv run python .claude/skills/quiz-from-homework/scripts/quiz_homework_helper.py \
+  --subject 算法设计与分析 \
+  --questions .claude/skills/quiz-from-homework/quiz-from-homework-workspace/iteration-2/eval-1-tex-rerun/with_skill/outputs/extracted_questions.json \
+  --validate
+```
+
+### 输出：
+```
+所有新题目 schema 校验通过。
+```
+
+## 命令 3：Diff 预览
+```bash
+uv run python .claude/skills/quiz-from-homework/scripts/quiz_homework_helper.py \
+  --subject 算法设计与分析 \
+  --questions .claude/skills/quiz-from-homework/quiz-from-homework-workspace/iteration-2/eval-1-tex-rerun/with_skill/outputs/extracted_questions.json \
+  --preview
+```
+
+### 输出：
+（见 diff_preview.txt，显示将追加 4 道 short_answer 题到近似算法章节）
+
+## 命令 4：写入（未执行）
+由于去重检测到 4 道精确重复，按照 skill 流程未执行 --write。
+写入命令应为：
+```bash
+uv run python .claude/skills/quiz-from-homework/scripts/quiz_homework_helper.py \
+  --subject 算法设计与分析 \
+  --questions .claude/skills/quiz-from-homework/quiz-from-homework-workspace/iteration-2/eval-1-tex-rerun/with_skill/outputs/extracted_questions.json \
+  --write
+```

@@ -1,0 +1,17 @@
+{
+  "skill_name": "quiz-from-homework",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我把 /Users/semt0/Desktop/2026春/算分/hw8/hw8.pdf 里的题目加到算法设计与分析题库，没有解答的题目先补一下。",
+      "expected_output": "读取 PDF，推断科目为算法设计与分析，提取 4 道近似算法证明题，补全缺失解答，去重校验后展示 diff，用户确认后写入 docs/note/算法设计与分析/quiz.yml 并运行 update_quiz.py。",
+      "files": ["/Users/semt0/Desktop/2026春/算分/hw8/hw8.pdf"]
+    },
+    {
+      "id": 2,
+      "prompt": "这份 LaTeX 源文件 /Users/semt0/Desktop/2026春/算分/hw8/hw8.tex 是算法设计与分析第八次作业，帮我把它里面的证明题整理成 short_answer 题型加入题库。",
+      "expected_output": "读取 .tex 文件，提取题目和解答，生成 4 道 short_answer 题目，校验 schema 与重复，展示 diff，确认后写入。",
+      "files": ["/Users/semt0/Desktop/2026春/算分/hw8/hw8.tex"]
+    }
+  ]
+}

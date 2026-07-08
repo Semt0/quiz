@@ -1,0 +1,68 @@
+===================================================================
+执行步骤摘要
+===================================================================
+
+任务: 将 LaTeX 源文件 hw8.tex 中的证明题整理为 short_answer 题型
+文件: /Users/semt0/Desktop/2026春/算分/hw8/hw8.tex
+输出目录: /Users/semt0/blog/Semt0.github.io/.claude/skills/quiz-from-homework/quiz-from-homework-workspace/iteration-1/eval-2-tex/without_skill/outputs/
+
+--- 步骤 1: 读取源文件 ---
+- 成功读取 hw8.tex (200 行)
+- 识别出 4 道 problem 环境包裹的题目
+- 题目编号: 10.1, 10.3, 10.4, 10.5
+- 所有题目均为证明题（要求分析近似性能或证明不等式）
+
+--- 步骤 2: 检查现有题库格式 ---
+- 读取 docs/note/算法设计与分析/quiz.yml
+- 确认章节结构: 近似算法章节已存在
+- 确认题型格式: short_answer 题型结构（question, answer, keywords, explanation）
+- 现有近似算法题目 ID 范围: algo-approx-001 ~ algo-approx-105
+
+--- 步骤 3: 题目匹配与去重 ---
+- 发现 hw8.tex 的 4 道题目已存在于 quiz.yml 中
+- 匹配关系:
+  * 10.1 (MVC修改) → algo-approx-101 (已存在)
+  * 10.3 (FF算法)   → algo-approx-103 (已存在)
+  * 10.4 (下界证明) → algo-approx-104 (已存在)
+  * 10.5 (MCUT)     → algo-approx-105 (已存在)
+- 未使用 ID: algo-approx-102
+
+--- 步骤 4: 生成输出文件 ---
+1. extracted_questions.json
+   - 包含 4 道 short_answer 题目的结构化数据
+   - 每道题包含: id, type, difficulty, question, answer, explanation, keywords, chapter, source
+
+2. diff_preview.txt
+   - 展示与现有 quiz.yml 的差异
+   - 标记已存在题目和新题目
+   - 包含可插入的 YAML 片段
+
+3. summary.txt (本文件)
+   - 执行步骤记录
+
+--- 提取结果统计 ---
+- 总题目数: 4
+- 已存在于题库: 4
+- 新题目: 0
+- 题型: 全部为 short_answer
+- 推断科目: 算法设计与分析 (近似算法章节)
+- 难度分布: advanced (3), exam (1)
+
+--- 题目明细 ---
+1. 10.1 最小顶点覆盖修改算法的近似性能分析
+   - 核心思路: 星形图反例，证明近似比无界
+   - 关键词: 最小顶点覆盖, 近似算法, 星形图, 近似比
+
+2. 10.3 首次适合算法 FF(I) < 2·OPT(I) 的证明
+   - 核心思路: 引理证明任意两箱重量之和 > B，然后双重计数
+   - 关键词: 装箱问题, 首次适合算法, FF, 近似比
+
+3. 10.4 装箱问题不存在近似比 r < 3/2 的近似算法
+   - 核心思路: 从划分问题归约，NP完全性证明
+   - 关键词: 装箱问题, 近似比下界, 划分问题, NP完全
+
+4. 10.5 最大割集 MCUT 算法 OPT ≤ 2·MCUT 的证明
+   - 核心思路: 终止条件 + 双重计数，非割边 ≤ 割边
+   - 关键词: 最大割集, 局部改进算法, 近似比, 双重计数
+
+===================================================================

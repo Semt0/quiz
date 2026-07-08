@@ -1,0 +1,73 @@
+[project]
+
+site_name = "Semt0's Quiz"
+site_description = "独立复习题库"
+site_author = "Semt0"
+site_url = "https://semt0.github.io/quiz/"
+copyright = """
+Copyright &copy; 2026 Semt0
+"""
+
+nav = [
+   {"主页" = "index.md"},
+   {"算法设计与分析" = "算法设计与分析.md"},
+   {"计算方法" = "计算方法.md"},
+]
+
+extra_css = [
+    "stylesheets/quiz.css",
+]
+
+extra_javascript = [
+    "javascripts/katex.js",
+    "javascripts/quiz.js",
+]
+
+[project.theme]
+
+custom_dir = "overrides"
+
+logo = ""
+favicon = ""
+language = "zh"
+font = false
+features = [
+    "content.code.annotate",
+    "content.code.copy",
+    "content.code.select",
+    "content.footnote.tooltips",
+    "content.tabs.link",
+    "content.tooltips",
+    "header.autohide",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.instant.progress",
+    "navigation.path",
+    "navigation.tabs",
+    "navigation.top",
+    "navigation.tracking",
+    "search.highlight",
+]
+
+# 自动模式（跟随系统）
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle = { icon = "material/link", name = "关闭自动模式" }
+
+# 日间模式
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "light-blue"
+accent = "cyan"
+toggle = { icon = "lucide/sun", name = "切换到深色模式" }
+
+# 夜间模式
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "deep-purple"
+accent = "purple"
+toggle = { icon = "lucide/moon", name = "切换到浅色模式" }

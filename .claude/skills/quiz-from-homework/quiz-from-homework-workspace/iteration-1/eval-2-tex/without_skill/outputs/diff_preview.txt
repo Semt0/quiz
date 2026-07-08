@@ -1,0 +1,88 @@
+===================================================================
+Diff Preview: 将 hw8.tex 中的证明题加入 quiz.yml（近似算法章节）
+===================================================================
+
+文件: docs/note/算法设计与分析/quiz.yml
+章节: 近似算法 (已有章节)
+
+--- 新增题目 (4 道 short_answer) ---
+
+[+] 题目 1: algo-approx-102 (新增)
+    类型: short_answer
+    难度: advanced
+    来源: hw8.tex 10.3
+    问题: 证明首次适合算法 FF(I) < 2·OPT(I)
+    状态: 新题目，quiz.yml 中尚无对应 ID
+
+[≈] 题目 2: algo-approx-101 (已存在)
+    类型: short_answer
+    难度: advanced
+    来源: hw8.tex 10.1
+    问题: 最小顶点覆盖修改算法的近似性能分析
+    状态: quiz.yml 中已存在 (ID: algo-approx-101)
+    差异: 本次提取与现有内容一致，无需变更
+
+[≈] 题目 3: algo-approx-103 (已存在)
+    类型: short_answer
+    难度: advanced (现有为 exam)
+    来源: hw8.tex 10.3
+    问题: 证明 FF(I) < 2·OPT(I)
+    状态: quiz.yml 中已存在 (ID: algo-approx-103)
+    注意: 现有题目难度标记为 exam，本次提取标记为 advanced
+          实际为同一道题，但 10.3 在 hw8.tex 中是证明题，与现有记录一致
+
+[≈] 题目 4: algo-approx-104 (已存在)
+    类型: short_answer
+    难度: exam
+    来源: hw8.tex 10.4
+    问题: 证明装箱问题不存在近似比 r < 3/2 的多项式时间近似算法
+    状态: quiz.yml 中已存在 (ID: algo-approx-104)
+    差异: 本次提取与现有内容一致，无需变更
+
+[≈] 题目 5: algo-approx-105 (已存在)
+    类型: short_answer
+    难度: advanced
+    来源: hw8.tex 10.5
+    问题: 证明最大割集 MCUT 算法 OPT ≤ 2·MCUT
+    状态: quiz.yml 中已存在 (ID: algo-approx-105)
+    差异: 本次提取与现有内容一致，无需变更
+
+--- 关键发现 ---
+
+1. hw8.tex 共 4 道证明题，全部已存在于 quiz.yml 中
+2. 题目 ID 分配情况:
+   - 10.1 (MVC修改) → algo-approx-101 (已存在)
+   - 10.3 (FF算法)   → algo-approx-103 (已存在)
+   - 10.4 (下界证明) → algo-approx-104 (已存在)
+   - 10.5 (MCUT)     → algo-approx-105 (已存在)
+3. 注意: 10.3 在 hw8.tex 中是一道完整的证明题，quiz.yml 中已有记录
+   但 algo-approx-102 这个 ID 尚未被使用
+
+--- 如果这是新导入，应添加的 YAML 片段 ---
+
+  - id: algo-approx-102
+    type: short_answer
+    difficulty: advanced
+    question: |
+      10.3 装箱问题（优化形式）：任给 n 件物品，物品 j 的重量为 w_j（1≤j≤n），
+      限制每只箱子装入物品的总重量不超过 B（w_j 和 B 都是正整数，且 w_j≤B）。
+      首次适合算法（FF）按照输入顺序装物品，对每一件物品依次检查每一只箱子，
+      只要能装得下就装入；只有在所有已打开的箱子都装不下时才新打开一只箱子。
+      证明：对装箱问题的所有实例 I，FF(I) < 2·OPT(I)。
+    answer: |
+      关键引理：对任意两只已打开的箱子 Si 和 Sj（i<j），有 w(Si)+w(Sj)>B。
+      因为 Sj 中第一件物品 x 当时无法装入 Si。由此可得总重量 W > ⌊m/2⌋·B，
+      而 OPT ≥ ⌈W/B⌉ ≥ ⌊m/2⌋+1，故 2·OPT > m = FF。
+    explanation: |
+      设 FF 产生 m 只箱子 S1,...,Sm。对 i<j，Sj 中第一件物品 x 装入时 Si 已打开
+      且装不下 x，故当时 Si 重量 + wx > B，从而 w(Si)+w(Sj) > B。将所有箱子两两
+      配对得 W > ⌊m/2⌋·B，OPT ≥ ⌈W/B⌉ ≥ ⌊m/2⌋+1，因此 FF = m < 2·OPT。
+    keywords:
+    - 装箱问题
+    - 首次适合算法
+    - FF
+    - 近似比
+    chapter: 近似算法
+    source: hw8.tex
+
+===================================================================

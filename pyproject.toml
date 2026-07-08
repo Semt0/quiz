@@ -1,0 +1,14 @@
+[project]
+name = "semt0-quiz"
+version = "0.1.0"
+description = "Semt0 的独立复习题库站点"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pyyaml>=6.0.3",
+]
+
+[dependency-groups]
+dev = [
+    "zensical>=0.0.23",
+]

@@ -1,0 +1,6 @@
+{
+  "eval_id": 2,
+  "eval_name": "tex-homework-to-quiz",
+  "prompt": "这份 LaTeX 源文件 /Users/semt0/Desktop/2026春/算分/hw8/hw8.tex 是算法设计与分析第八次作业，帮我把它里面的证明题整理成 short_answer 题型加入题库。",
+  "assertions": []
+}

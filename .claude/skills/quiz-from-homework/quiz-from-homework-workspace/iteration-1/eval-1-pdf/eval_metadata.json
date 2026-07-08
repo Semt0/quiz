@@ -1,0 +1,6 @@
+{
+  "eval_id": 1,
+  "eval_name": "pdf-homework-to-quiz",
+  "prompt": "帮我把 /Users/semt0/Desktop/2026春/算分/hw8/hw8.pdf 里的题目加到算法设计与分析题库，没有解答的题目先补一下。",
+  "assertions": []
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "algorithm-design-analysis-ch10-001",
+    "type": "short_answer",
+    "difficulty": "core",
+    "question": "10.1 最小顶点覆盖问题的近似算法 MVC 任取一条边，把这条边的两个端点加入顶点覆盖集，现在改为只把这条边的一个端点加入顶点覆盖集，其余不变。试分析这个修改后的算法的近似性能。",
+    "options": [],
+    "answer": "",
+    "explanation": "修改后的算法不再具有有界的常数近似比，其近似性能可以任意差。考虑星形图实例：中心顶点 c 与 n 个叶子顶点相连。最优解只需选中心顶点 c，大小为 1。但修改后的算法每一步可能不幸选中叶子顶点，需要将所有 n 个叶子顶点都加入覆盖集，输出大小为 n。因此近似比 ALG/OPT = n/1 = n，当 n→∞ 时趋于无穷大。",
+    "keywords": [
+      "最小顶点覆盖",
+      "近似算法",
+      "近似比",
+      "星形图",
+      "MVC"
+    ],
+    "chapter": "第10章 近似算法",
+    "source": "hw8.tex"
+  },
+  {
+    "id": "algorithm-design-analysis-ch10-002",
+    "type": "short_answer",
+    "difficulty": "core",
+    "question": "10.3 装箱问题（优化形式）：任给 n 件物品，物品 j 的重量为 w_j，1≤j≤n。限制每只箱子装入物品的总重量不超过 B，w_j 和 B 都是正整数，且 w_j≤B。要求用最少的箱子装入所有物品。考虑首次适合算法（FF）：按输入顺序装物品，对每一件物品依次检查每只箱子，只要能装下就装入，所有已打开的箱子都装不下时才新开一只箱子。证明：对装箱问题的所有实例 I，FF(I) < 2·OPT(I)。",
+    "options": [],
+    "answer": "",
+    "explanation": "证明思路：先证引理——对任意两只箱子 S_i 和 S_j（i<j），都有 w(S_i)+w(S_j)>B。因为装入 S_j 的第一件物品 x 无法装入当时已打开的 S_i（否则 FF 会把它放入 S_i），故 w(S_i')+w_x>B，而 w(S_i)≥w(S_i')，w(S_j)≥w_x，所以 w(S_i)+w(S_j)>B。由此，m 只箱子两两配对可得 ⌊m/2⌋ 对，每对重量之和>B，故总重量 W > ⌊m/2⌋·B。而 OPT(I) ≥ ⌈W/B⌉ ≥ ⌊m/2⌋+1，于是 2·OPT(I) ≥ 2⌊m/2⌋+2 > m = FF(I)。",
+    "keywords": [
+      "装箱问题",
+      "首次适合算法",
+      "FF",
+      "近似比",
+      "OPT",
+      "引理"
+    ],
+    "chapter": "第10章 近似算法",
+    "source": "hw8.tex"
+  },
+  {
+    "id": "algorithm-design-analysis-ch10-003",
+    "type": "short_answer",
+    "difficulty": "advanced",
+    "question": "10.4 证明：装箱问题不存在近似比 r < 3/2 的多项式时间近似算法，除非 P=NP。",
+    "options": [],
+    "answer": "",
+    "explanation": "采用反证法，从划分问题（Partition）归约。划分问题：给定 n 个正整数 a_1,...,a_n，判定是否存在子集 S 使得 Σ_{i∈S} a_i = Σ_{i∉S} a_i。假设存在近似比 r<3/2 的多项式时间近似算法 A。对划分实例，令 T=Σa_i，若 T 为奇数直接回答否；否则构造装箱实例：n 件物品重量 w_j=a_j，箱子容量 B=T/2。若划分有解，则 OPT=2，A(I)≤2r<3，故 A(I)≤2；若划分无解，则 OPT≥3，此时必有 A(I)≥3（否则 A(I)=2 会给出划分方案，矛盾）。因此划分问题有解当且仅当 A(I)≤2，可在多项式时间内求解划分问题。由于划分问题是 NP-完全的，故除非 P=NP，这样的 A 不存在。",
+    "keywords": [
+      "装箱问题",
+      "近似比下界",
+      "P=NP",
+      "划分问题",
+      "NP-完全",
+      "归约"
+    ],
+    "chapter": "第10章 近似算法",
+    "source": "hw8.tex"
+  },
+  {
+    "id": "algorithm-design-analysis-ch10-004",
+    "type": "short_answer",
+    "difficulty": "core",
+    "question": "10.5 设无向图 G=⟨V,E⟩，V_1∪V_2=V，V_1∩V_2=∅，称 (V_1,V_2)={(u,v)|(u,v)∈E, 且 u∈V_1,v∈V_2} 是 G 的割集。求最大割集问题：任给无向图 G，求边数最多的割集。考虑局部改进算法 MCUT：令 V_1=V，V_2=∅。如果存在顶点 u，在 u 关联的边中非割边多于割边，就把 u 移到另一侧。直到不存在这样的顶点为止。证明：对最大割集问题的每一个实例 I，OPT(I) ≤ 2·MCUT(I)。",
+    "options": [],
+    "answer": "",
+    "explanation": "设 MCUT 终止时割边集为 E_cut，非割边集为 E_non。终止条件：对任意顶点 u，d_non(u) ≤ d_cut(u)。将所有顶点不等式相加得 Σ d_non(u) ≤ Σ d_cut(u)。由于每条非割边两端在同一侧，被左端计数两次，故左端=2|E_non|；每条割边两端分属两侧，被右端计数两次，故右端=2|E_cut|。因此 2|E_non| ≤ 2|E_cut|，即 |E_non| ≤ |E_cut|。总边数 |E| = |E_cut|+|E_non| ≤ 2|E_cut| = 2·MCUT(I)。而 OPT(I) ≤ |E|，故 OPT(I) ≤ 2·MCUT(I)。",
+    "keywords": [
+      "最大割集",
+      "局部改进算法",
+      "MCUT",
+      "近似比",
+      "割边",
+      "非割边"
+    ],
+    "chapter": "第10章 近似算法",
+    "source": "hw8.tex"
+  }
+]
