@@ -5,6 +5,7 @@ description = "Semt0 的独立复习题库站点"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "markdown-obsidian-callouts>=0.1.1",
     "pyyaml>=6.0.3",
 ]
 
