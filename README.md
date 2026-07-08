@@ -1,6 +1,10 @@
 # Semt0's Quiz
 
+[![Deploy Quiz](https://github.com/Semt0/quiz/actions/workflows/docs.yml/badge.svg)](https://github.com/Semt0/quiz/actions/workflows/docs.yml)
+
 独立复习题库站点，从博客仓库拆分出来，专门承载各科目的交互式复习题。
+
+**在线地址**: <https://semt0.github.io/quiz/>
 
 ## 目录结构
 
