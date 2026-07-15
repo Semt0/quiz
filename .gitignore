@@ -1,6 +1,16 @@
 # Build outputs
 site/
 .cache/
+dist/
+
+# Generated quiz data (by scripts/build_quiz.py)
+public/data/
+
+# Node
+node_modules/
+
+# Local rebuild plan (scratch)
+REBUILD_PLAN.md
 
 # Python
 .venv/

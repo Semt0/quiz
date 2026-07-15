@@ -1,0 +1,21 @@
+{
+  "name": "semt0-quiz",
+  "version": "1.0.0",
+  "description": "Semt0 的独立复习题库站点",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:prod": "BASE_URL=/quiz/ npm run build",
+    "preview": "vite preview",
+    "preview:prod": "BASE_URL=/quiz/ npm run preview"
+  },
+  "dependencies": {
+    "katex": "^0.16.22",
+    "svelte": "^5.36.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.1.0",
+    "vite": "^6.3.5"
+  }
+}

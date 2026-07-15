@@ -2,7 +2,7 @@
 name: quiz-from-homework
 description: |
   根据用户上传的作业文件自动补充博客复习题库。当用户提到"作业""补充题库""加到题库""生成题库""quiz""复习题""把这道题加进去""作业里的题"或上传 PDF/图片/Markdown/文本作业文件时触发。
-  自动推断科目、提取题目、生成解答、校验 schema、检测重复、做 LLM 自洽性检查，最终展示 diff 并经用户确认后写入 data/<subject>/quiz.yml，然后运行 scripts/update_quiz.py 重新生成题库页面。
+  自动推断科目、提取题目、生成解答、校验 schema、检测重复、做 LLM 自洽性检查，最终展示 diff 并经用户确认后写入 data/<subject>/quiz.yml，然后运行 scripts/build_quiz.py 重新构建静态站点。
 compatibility: |
   需要 Python 3.13+、uv 以及项目依赖。PDF/图片 OCR 依赖外部工具（优先用已安装的 pymupdf/pdf2image/pytesseract，如无则提示用户安装）。
 ---
@@ -26,7 +26,7 @@ compatibility: |
 5. **补解答**：若题目缺少 `answer` 或 `explanation`，调用 LLM 生成解答，并做 LLM 自洽性检查。
 6. **校验**：**必须**调用 helper 脚本 `quiz_homework_helper.py --validate`，使用项目 schema 校验字段格式。
 7. **展示 diff**：**必须**调用 helper 脚本 `quiz_homework_helper.py --preview`，用统一 diff 格式展示即将写入的变更，等待用户确认。
-8. **写入并更新**：用户确认后，**必须**调用 helper 脚本 `quiz_homework_helper.py --write` 追加到 `docs/note/<subject>/quiz.yml`，然后运行 `uv run python scripts/update_quiz.py` 重新生成题库页面。
+8. **写入并更新**：用户确认后，**必须**调用 helper 脚本 `quiz_homework_helper.py --write` 追加到 `data/<subject>/quiz.yml`，然后运行 `uv run python scripts/build_quiz.py` 重新构建静态站点。
 
 **核心原则：所有确定性的去重、校验、diff、写入操作都必须通过 helper 脚本完成，不要自己重新实现这些逻辑，也不要直接用 Read/Edit/Write 修改 `data/<subject>/quiz.yml`。这样能保证结果一致、可验证、可复现。**
 
@@ -193,7 +193,7 @@ uv run python .claude/skills/quiz-from-homework/scripts/quiz_homework_helper.py 
 最后运行：
 
 ```bash
-uv run python scripts/update_quiz.py
+uv run python scripts/build_quiz.py
 ```
 
 ## 9 错误处理
@@ -215,6 +215,6 @@ uv run python scripts/update_quiz.py
 4. 生成解答并做自洽性检查，全部通过。
 5. 调用 helper 脚本去重、校验、生成 diff。
 6. 展示 diff，用户确认。
-7. 调用 helper 脚本写入 `docs/note/算法设计与分析/quiz.yml`。
-8. 运行 `update_quiz.py`。
+7. 调用 helper 脚本写入 `data/算法设计与分析/quiz.yml`。
+8. 运行 `build_quiz.py`。
 9. 报告：成功添加 5 题，跳过 0 题，待复核 0 题。

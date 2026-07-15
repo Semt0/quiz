@@ -13,15 +13,18 @@
 ├── data/                     # 题库原始数据（按科目分目录的 quiz.yml）
 │   ├── 算法设计与分析/
 │   └── 计算方法/
-├── docs/                     # 由 update_quiz.py 生成的题库页面
-│   ├── index.md
-│   ├── 算法设计与分析.md
-│   ├── 计算方法.md
-│   ├── javascripts/quiz.js
-│   └── stylesheets/quiz.css
+├── public/                   # 静态资源（含 build_quiz.py 生成的题库 JSON）
+│   ├── data/manifest.json
+│   └── data/subject-*.json
 ├── scripts/
-│   └── update_quiz.py        # 扫描 data/ 下的 quiz.yml 生成 docs/
-├── overrides/                # Zensical 主题覆盖（加载 KaTeX 等）
+│   └── build_quiz.py         # 扫描 data/ 下的 quiz.yml，生成 public/data/*.json
+├── src/                      # Vite + Svelte 5 源码
+│   ├── components/
+│   ├── pages/
+│   └── lib/
+├── index.html
+├── package.json
+├── vite.config.js
 └── .claude/skills/
     └── quiz-from-homework/   # 根据作业自动补充题库的 Claude Skill
 ```
@@ -29,23 +32,24 @@
 ## 本地开发
 
 ```bash
-uv sync
-uv run python scripts/update_quiz.py
-uv run zensical serve
+python3 scripts/build_quiz.py   # 生成 public/data/*.json
+npm install
+npm run dev                     # http://localhost:5173/
 ```
 
-## 构建
+## 生产构建
 
 ```bash
-uv run python scripts/update_quiz.py
-uv run zensical build --clean
+python3 scripts/build_quiz.py
+npm run build:prod
+npm run preview:prod            # http://localhost:4173/quiz/
 ```
 
 ## 新增题目
 
 1. 将作业或题目整理为符合 schema 的 JSON。
 2. 使用 `.claude/skills/quiz-from-homework/scripts/quiz_homework_helper.py` 去重、校验并写入 `data/<subject>/quiz.yml`。
-3. 运行 `uv run python scripts/update_quiz.py` 重新生成页面。
+3. 运行 `python3 scripts/build_quiz.py` 重新生成题库数据。
 
 ## 部署
 
